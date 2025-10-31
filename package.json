@@ -1,0 +1,38 @@
+{
+  "name": "linked-summary",
+  "version": "0.1.0",
+  "description": "Chrome built-in AI summarizer that connects every summary to its original source.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch --progress --node-env development",
+    "build": "webpack --watch --progress --node-env production",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "chrome-types": "^0.1.196",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
+    "dotenv-webpack": "^8.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.14.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.2",
+    "prettier": "^3.4.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@material/web": "^2.4.0",
+    "@mozilla/readability": "^0.6.0",
+    "@xenova/transformers": "^2.17.2",
+    "lit": "^3.3.1",
+    "material-symbols": "^0.38.0"
+  }
+}

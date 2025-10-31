@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Linked Summary",
+  "short_name": "Linked Summary",
+  "version": "1.0.0",
+  "description": "Chrome built-in AI summarizer that connects every summary to its original source.",
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "sidePanel",
+    "unlimitedStorage"
+  ],
+
+  "host_permissions": ["<all_urls>"],
+
+  "trial_tokens": [
+    "AkCTYMp3KlVV1EAP1c2I4pYTKUWONEG+qdNUBtNcYg+yxGuE7LQkVI3C1EOmFxotopIRUqk6jknpVOV1uC+WhAcAAAB7eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vZmhvZ3BwamRiaG1lamRhZWtqY25rZm5oYm1iZnBubW8iLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDB9"
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_state": "enabled",
+    "default_title": "Toggle Linked Summary Side Panel",
+    "default_icon": "images/icon16.png"
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' https://apis.google.com https://www.gstatic.com https://www.googleapis.com https://securetoken.googleapis.com; object-src 'self'"
+  },
+
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
