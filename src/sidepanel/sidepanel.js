@@ -152,6 +152,7 @@ class Sidepanel extends LitElement {
     await this.initTabStateFromStorage();
     await this.setupStorageListener();
     if (this.targets.length > 0 && this.keyPoints.length === 0) {
+      debugger;
       await this.summarizeAndSave();
     }
     this.tabState;
@@ -239,7 +240,7 @@ class Sidepanel extends LitElement {
 
   async generateKeyPoints() {
     try {
-      if (!(this.targets?.length > 0)) {
+      if (this.targets?.length === 0) {
         throw new Error("No targets available for summarization");
       }
 

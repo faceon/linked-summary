@@ -105,6 +105,7 @@ module.exports = {
 
   output: {
     filename: "[name].js",
+    chunkFilename: "chunk-[id].js",
     path: path.resolve(__dirname, "dist"),
   },
 };
