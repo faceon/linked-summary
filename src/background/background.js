@@ -3,6 +3,13 @@ import { extractContentsFromTab } from "../common/extractContents.js";
 
 let isProcessing = false;
 
+// on installed, open https://faceon.github.io/linked-summary
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.tabs.create({
+    url: "https://faceon.github.io/linked-summary/",
+  });
+});
+
 chrome.action.onClicked.addListener(async (tab) => {
   if (isProcessing) return; // Prevent multiple clicks during processing
   isProcessing = true;
