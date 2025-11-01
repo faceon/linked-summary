@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Linked Summary – Onboarding Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- LEFT: article page -->
+      <article class="page" id="page">
+        <header class="page-header">
+          <h1>Summaries you can verify — each linked back to its source.</h1>
+          <p class="meta">Product · Chrome Built-in AI · Local first</p>
+        </header>
+
+        <div class="article-body">
+          <p>
+            AI summarizers made it incredibly easy to skim long articles, but
+            something got lost on the way:
+            <span class="hl-target" id="p-problem">
+              readers can’t always tell where a specific sentence actually came
+              from.
+            </span>
+            That single gap is what makes a “convenient” summary different from
+            a “trustworthy” one.
+          </p>
+
+          <p>
+            For most people, the ideal experience is simple: read the short
+            version first, and
+            <span class="hl-target" id="p-jump">
+              jump to the original paragraph when something looks interesting or
+              suspicious.
+            </span>
+            That’s exactly what Linked Summary tries to recreate — inside the
+            browser, without sending the page to a server.
+          </p>
+
+          <h2 id="sec-local">Why local?</h2>
+          <p>
+            Chrome’s built-in AI lets us process the current tab
+            <span class="hl-target" id="p-local">
+              directly on the device, which means the page you’re reading never
+              leaves your computer.
+            </span>
+            This matters for internal docs, paywalled pages, or anything you
+            don’t want to upload.
+          </p>
+
+          <h2 id="sec-linking">Linking summaries back to source</h2>
+          <p>
+            When Linked Summary generates key points, it also stores a pointer
+            to
+            <span class="hl-target" id="p-linking">
+              the DOM segment that most likely produced that sentence.
+            </span>
+            So when a user clicks on the key point in the side panel, the
+            original text is revealed and softly highlighted.
+          </p>
+          <p>
+            This keeps the AI helpful, but also
+            <span class="hl-target" id="p-trust">
+              makes it accountable — you can see what it saw.
+            </span>
+          </p>
+
+          <h2 id="sec-flow">How users see it</h2>
+          <p>
+            The flow is intentionally short: open a page → click the extension →
+            read the linked summary.
+            <span class="hl-target" id="p-flow">
+              No extra windows, no copy-pasting, just side-panel reading.
+            </span>
+            That’s important for people who read several articles in a row.
+          </p>
+
+          <p class="footnote">
+            This page is a demo. In the real extension the right panel is
+            injected next to the page you’re reading.
+          </p>
+        </div>
+      </article>
+
+      <!-- RIGHT: linked summary panel -->
+      <aside class="sidepanel" id="sidepanel">
+        <div class="sidepanel-header">
+          <div>
+            <div class="sidepanel-title">
+              Summaries you can verify — each linked back to its source.
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-list">
+          <button class="summary-item" data-target="p-problem">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >AI summaries lose trust when sources aren’t visible.</span
+            >
+          </button>
+          <button class="summary-item" data-target="p-jump">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >Users want to jump from the summary back to the exact
+              paragraph.</span
+            >
+          </button>
+          <button class="summary-item" data-target="p-local">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >Chrome built-in AI runs locally, so content stays on
+              device.</span
+            >
+          </button>
+          <button class="summary-item" data-target="p-linking">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >Each key point is mapped to a DOM segment.</span
+            >
+          </button>
+          <button class="summary-item" data-target="p-trust">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >Linking source → makes AI accountable.</span
+            >
+          </button>
+          <button class="summary-item" data-target="p-flow">
+            <span class="dot"></span>
+            <span class="summary-text"
+              >Side-panel reading keeps the experience in-context.</span
+            >
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      const items = document.querySelectorAll(".summary-item");
+      const targets = document.querySelectorAll(".hl-target");
+
+      function clearHighlights() {
+        targets.forEach((t) => t.classList.remove("is-highlighted"));
+      }
+
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          const id = item.getAttribute("data-target");
+          const targetEl = document.getElementById(id);
+          if (!targetEl) return;
+          clearHighlights();
+          targetEl.classList.add("is-highlighted");
+          targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    </script>
+  </body>
+</html>
