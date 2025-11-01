@@ -4,6 +4,7 @@
   --text: #1f2937;
   --muted: #6b7280;
   --highlight: rgba(145, 206, 255, 0.383);
+  --panel-bg: #0f172a;
 }
 
 body {
@@ -17,6 +18,8 @@ body {
     sans-serif;
   color: var(--text);
 }
+
+/* keep 2-column layout even on smaller width */
 .layout {
   display: grid;
   grid-template-columns: minmax(620px, 1fr) 320px;
@@ -24,11 +27,9 @@ body {
   max-width: 1180px;
   margin: 0 auto;
   padding: 1.25rem 1.25rem 2.5rem;
-  /* 2컬럼이 깨지지 않도록 최소 너비 보장 */
   min-width: 960px;
 }
 @media (max-width: 980px) {
-  /* 화면이 더 작으면 전체를 가로로 스크롤하게 */
   body {
     overflow-x: auto;
   }
@@ -37,7 +38,7 @@ body {
   }
 }
 
-/* 왼쪽: 기사 페이지 */
+/* left column (article) */
 .page {
   background: var(--page);
   border-radius: 1rem;
@@ -45,8 +46,9 @@ body {
   border: 1px solid rgba(148, 163, 184, 0.25);
   padding: 1.6rem 1.9rem 2.5rem;
 }
+
 .page-header h1 {
-  font-size: clamp(1.8rem, 3.1vw, 2.1rem);
+  font-size: clamp(1.65rem, 3vw, 2.1rem);
   margin-bottom: 0.35rem;
 }
 .page-header .meta {
@@ -54,6 +56,7 @@ body {
   font-size: 0.85rem;
   margin-bottom: 1.3rem;
 }
+
 .article-body p {
   line-height: 1.65;
   margin-bottom: 1rem;
@@ -61,29 +64,53 @@ body {
 }
 .article-body h2 {
   margin-top: 1.7rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.08rem;
 }
 .footnote {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #94a3b8;
   margin-top: 1.6rem;
   border-top: 1px solid rgba(148, 163, 184, 0.25);
   padding-top: 0.7rem;
 }
 
-/* 하이라이트 되는 문장 조각 */
+/* practical sections (repo, install, links) */
+.practical {
+  margin-top: 1.6rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  padding-top: 1rem;
+}
+.compact-list {
+  margin: 0.35rem 0 1rem 1.1rem;
+  padding: 0;
+  line-height: 1.5;
+}
+.link-list {
+  list-style: disc;
+  margin: 0.45rem 0 0 1.1rem;
+  padding: 0;
+}
+.link-list a {
+  color: #0f4ccf;
+  text-decoration: none;
+}
+.link-list a:hover {
+  text-decoration: underline;
+}
+
+/* highlight targets */
 .hl-target {
-  transition: background 0.25s ease;
+  transition: background 0.2s ease;
   border-radius: 0.3rem;
-  padding: 0.1rem 0.25rem;
+  padding: 0.05rem 0.25rem;
 }
 .is-highlighted {
   background: var(--highlight);
   box-shadow: 0 0 0 1px rgba(145, 206, 255, 0.35);
 }
 
-/* 오른쪽: 사이드패널 */
+/* right column (side panel) */
 .sidepanel {
   background: var(--panel-bg);
   border-radius: 1rem;
@@ -96,24 +123,17 @@ body {
   max-height: calc(100vh - 2.5rem);
 }
 .sidepanel-header {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  padding: 0.8rem 0.8rem 0.3rem;
-}
-.sidepanel-header img {
-  width: 32px;
-  height: 32px;
-  border-radius: 0.8rem;
-  background: #fff;
+  padding: 0.8rem 0.8rem 0.35rem;
 }
 .sidepanel-title {
   font-size: 0.85rem;
   font-weight: 600;
+  color: #e2e8f0;
 }
 .sidepanel-sub {
   font-size: 0.68rem;
   color: #94a3b8;
+  margin-top: 0.15rem;
 }
 .summary-list {
   padding: 0.4rem 0.6rem 0.5rem;
@@ -121,11 +141,11 @@ body {
 }
 .summary-item {
   width: 100%;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  background: rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.15);
   border-radius: 0.6rem;
   padding: 0.45rem 0.5rem 0.45rem 0.55rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.42rem;
   display: flex;
   gap: 0.5rem;
   align-items: flex-start;
@@ -136,7 +156,7 @@ body {
     border 0.15s;
 }
 .summary-item:hover {
-  background: rgba(148, 163, 184, 0.1);
+  background: rgba(148, 163, 184, 0.08);
   border-color: rgba(148, 163, 184, 0.6);
 }
 .dot {
@@ -150,6 +170,7 @@ body {
 .summary-text {
   font-size: 0.75rem;
   line-height: 1.3;
+  color: #dbeafe;
 }
 .panel-hint {
   font-size: 0.65rem;
