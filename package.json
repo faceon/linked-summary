@@ -1,6 +1,6 @@
 {
   "name": "linked-summary",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Chrome built-in AI summarizer that connects every summary to its original source.",
   "license": "MIT",
   "main": "index.js",
