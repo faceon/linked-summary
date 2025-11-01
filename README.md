@@ -4,6 +4,15 @@
 
 ---
 
+## 🧭 Install (Developer Mode)
+
+1. [Download the latest build](https://github.com/faceon/linked-summary/releases/latest)
+2. Unzip the file.
+3. In Chrome, go to `chrome://extensions`
+4. Enable **Developer mode** (top right).
+5. Click **Load unpacked** → select the unzipped folder.
+6. Open any page and click the Linked Summary icon.
+
 ## 🚀 Inspiration
 
 AI summaries are everywhere, but they often lose context and trust.  

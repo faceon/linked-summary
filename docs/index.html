@@ -11,7 +11,17 @@
       <!-- LEFT: article-like page -->
       <article class="page" id="page">
         <header class="page-header">
-          <h1>Verifiable summaries — each linked back to its source</h1>
+          <div class="welcome-block" id="p-welcome">
+            <h1>Welcome to Linked Summary 👋</h1>
+            <p class="welcome-text">
+              Your extension is installed and ready. This page shows how
+              summaries in the right panel connect back to the original content
+              on the left.
+            </p>
+          </div>
+          <h2 class="page-title">
+            Verifiable summaries — each linked back to its source
+          </h2>
         </header>
 
         <div class="article-body">
@@ -24,7 +34,7 @@
               used.
             </span>
             That’s the gap Linked Summary tries to close. We wanted a summarizer
-            that is not only fast, but also traceable.
+            that is verifiable.
           </p>
 
           <p>
@@ -37,6 +47,18 @@
             panel that stays on the page and points back to the DOM.
           </p>
 
+          <!-- NEW: Why source-linked -->
+          <h2 id="sec-why-source">Why source-linked?</h2>
+          <p>
+            Most AI summaries are helpful but opaque. Linked Summary makes them
+            <span class="hl-target" id="p-source-benefit">
+              explainable: every key point can be traced to its origin.
+            </span>
+            That means you can show a summary in a video, share it with a team,
+            or review a long policy article — and still prove where it came
+            from.
+          </p>
+
           <h2 id="sec-local">Why local?</h2>
           <p>
             Since this runs on Chrome’s built-in AI,
@@ -45,6 +67,19 @@
             </span>
             That makes it safe to try on internal docs, admin pages, draft
             content, or anything you don’t want to send to a remote API.
+          </p>
+
+          <!-- NEW: What happens after install -->
+          <h2 id="sec-after-install">What happens after install</h2>
+          <p>
+            After installation, you can open any article, blog post, press
+            release, or documentation page. When you click the extension icon,
+            Linked Summary opens on the right and
+            <span class="hl-target" id="p-loading">
+              generates a summary and stores links to the source sentences.
+            </span>
+            From there, clicking a summary item will scroll the page and
+            highlight the exact sentence it came from.
           </p>
 
           <h2 id="sec-linking">Source-linked summaries</h2>
@@ -82,39 +117,25 @@
           <section class="practical" id="sec-getting-started">
             <h2>Getting started</h2>
             <p>
-              The project lives here:
-              <a href="https://github.com/faceon/linked-summary">
-                github.com/faceon/linked-summary
-              </a>
+              If you want to reinstall or share it with teammates, use the build
+              from GitHub:
             </p>
-            <p>To load it in Chrome:</p>
             <ol class="compact-list">
-              <li>Clone the repo locally.</li>
-              <li>Open <code>chrome://extensions</code> in Chrome.</li>
-              <li>Turn on <strong>Developer mode</strong> (top right).</li>
               <li>
-                Click <strong>Load unpacked</strong> and select the repo folder.
+                <a
+                  href="https://github.com/faceon/linked-summary/releases/latest"
+                  >Download the latest build</a
+                >
               </li>
+              <li>Unzip the file.</li>
+              <li>In Chrome, go to <code>chrome://extensions</code></li>
+              <li>Enable <strong>Developer mode</strong> (top right).</li>
+              <li>
+                Click <strong>Load unpacked</strong> → select the unzipped
+                folder.
+              </li>
+              <li>Open any page and click the Linked Summary icon.</li>
             </ol>
-
-            <h3>What happens on load</h3>
-            <p>
-              After you click the extension icon, a side panel opens and
-              <span class="hl-target" id="p-loading">
-                Chrome’s built-in AI summarizes the current tab and attaches
-                source pointers to each key sentence.
-              </span>
-            </p>
-
-            <h3>Using it, quickly</h3>
-            <ul class="compact-list">
-              <li>Open any article-like page</li>
-              <li>Click the <em>Linked Summary</em> icon</li>
-              <li>Pick a key point on the right</li>
-              <li>
-                The left page scrolls and highlights only the relevant phrase
-              </li>
-            </ul>
           </section>
 
           <!-- 3. sample pages to try -->
@@ -122,7 +143,7 @@
             <h2>Pages to try</h2>
             <p>
               These are good test pages because they’re structured, public, and
-              long enough to show the value of linked summaries.
+              long enough to show the value of source-linked summaries.
               <span class="hl-target" id="p-links">
                 Open one of these and run the extension to see the
                 scroll-and-highlight behavior.
@@ -149,8 +170,9 @@
           </section>
 
           <p class="footnote">
-            This page is just a demo for the Chrome extension UI — it simulates
-            how the side panel scrolls and highlights the source.
+            This page is a demo for video and testing — it simulates how the
+            side panel scrolls and highlights the source for each summary item.
+            :contentReference[oaicite:1]{index=1}
           </p>
         </div>
       </article>
@@ -160,53 +182,45 @@
         <div class="sidepanel-header">
           <div>
             <div class="sidepanel-title">Linked Summary</div>
-            <div class="sidepanel-sub">
-              Verifiable summaries — each linked back to its source
-            </div>
+            <div class="sidepanel-sub">Click to verify → left side scrolls</div>
           </div>
         </div>
 
         <div class="summary-list">
           <button class="summary-item" data-target="p-problem">
             <span class="dot"></span>
-            <span class="summary-text"
-              >Summaries lose trust when the source isn’t visible.</span
-            >
+            <span class="summary-text">
+              AI summaries lose trust when the source isn’t visible.
+            </span>
           </button>
-          <button class="summary-item" data-target="p-jump">
+          <button class="summary-item" data-target="p-source-benefit">
             <span class="dot"></span>
-            <span class="summary-text"
-              >Users want to jump back to the exact paragraph.</span
-            >
+            <span class="summary-text">
+              Source-linked summaries make AI explainable.
+            </span>
           </button>
           <button class="summary-item" data-target="p-local">
             <span class="dot"></span>
-            <span class="summary-text"
-              >Chrome built-in AI lets us run it locally.</span
-            >
-          </button>
-          <button class="summary-item" data-target="p-linking">
-            <span class="dot"></span>
-            <span class="summary-text"
-              >Each key point is mapped to the original DOM segment.</span
-            >
-          </button>
-          <button class="summary-item" data-target="p-usage">
-            <span class="dot"></span>
-            <span class="summary-text"
-              >Open → click → skim → click → highlight.</span
-            >
+            <span class="summary-text">
+              Chrome built-in AI runs it locally — no cloud.
+            </span>
           </button>
           <button class="summary-item" data-target="p-loading">
             <span class="dot"></span>
-            <span class="summary-text"
-              >On load we attach source pointers to each sentence.</span
-            >
+            <span class="summary-text">
+              On click, we summarize and attach source pointers.
+            </span>
+          </button>
+          <button class="summary-item" data-target="p-links">
+            <span class="dot"></span>
+            <span class="summary-text">
+              Try it on real pages (White House, NASA, EU).
+            </span>
           </button>
         </div>
 
         <p class="panel-hint">
-          Click a point → the article scrolls → only the relevant phrase gets
+          Click a point → the article scrolls → only the relevant phrase is
           highlighted.
         </p>
       </aside>
@@ -214,7 +228,7 @@
 
     <script>
       const items = document.querySelectorAll(".summary-item");
-      const targets = document.querySelectorAll(".hl-target");
+      const targets = document.querySelectorAll(".hl-target, .welcome-block");
 
       function clearHighlights() {
         targets.forEach((t) => t.classList.remove("is-highlighted"));
